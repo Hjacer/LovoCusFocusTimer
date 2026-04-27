@@ -1,0 +1,3 @@
+# Ignore personal notes folder and all contents
+own_notes/
+own_notes/*
