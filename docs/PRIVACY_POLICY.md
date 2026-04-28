@@ -19,8 +19,7 @@ LovoCus is an offline-first focus and productivity timer. **We do not collect, t
 The app stores the following information **only on your device** (using Android `SharedPreferences` and a local SQLite-style database). None of this data is transmitted to us or any third party.
 
 - **Session history** — start time, end time, duration, mode (Soft / Strict), whether the session was completed or cancelled, number of pauses, and number of foreground app interruptions detected during Strict sessions.
-- **App preferences** — your chosen focus duration, break duration, selected focus and break soundtracks, focus intensity, and whether app blocking is enabled.
-- **Block-list selections** — the package names of apps you have personally chosen to block during focus sessions.
+- **App preferences** — your chosen focus duration, break duration, selected focus and break soundtracks, and focus intensity.
 - **Daily aggregates** — the per-day summaries LovoCus computes from the above (used to render the Dashboard charts).
 
 You can delete all of this data at any time by clearing the app's storage in Android Settings → Apps → LovoCus → Storage → Clear Data, or by uninstalling the app.
@@ -49,45 +48,18 @@ We have no servers, no backend, and no cloud infrastructure associated with Lovo
 | `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK` | Keeps your focus timer and soundtrack running reliably while the screen is locked or the app is backgrounded. | No |
 | `POST_NOTIFICATIONS` | Shows the ongoing-session notification (timer + cancel button) and session-complete cues. | No |
 | `ACCESS_NOTIFICATION_POLICY` | Lets LovoCus enable Do Not Disturb mode automatically during a focus session, so notifications don't break your concentration. Phone calls are not silenced. | No |
-| `BIND_ACCESSIBILITY_SERVICE` *(only active if you enable App Blocking in Settings)* | Detects when a blocked app comes to the foreground during an active focus session and returns you to your home screen. The service reads the package name of the foregrounded app **only**, compares it against the block-list you chose, and discards the value immediately. It does not read window content, screen text, passwords, or any other accessibility metadata. | No |
 
 You can revoke any of these permissions at any time from Android system Settings.
 
 ---
 
-## 5. About the Accessibility service
-
-LovoCus's Accessibility service is **strictly opt-in**. It is disabled by default. To enable it, you must:
-
-1. Turn on "Block distracting apps" in LovoCus Settings, **and**
-2. Manually grant Accessibility access in Android system Settings.
-
-When active, the service:
-
-- Operates only while a focus session is in progress.
-- Listens for `TYPE_WINDOW_STATE_CHANGED` events to read the package name of the app that just came to the foreground, and for `TYPE_VIEW_CLICKED` events to count screen interactions during Strict sessions for the in-app statistics shown on your Dashboard.
-- Has `canRetrieveWindowContent="false"` declared in its configuration, meaning it cannot read on-screen text, form fields, passwords, or any accessibility metadata beyond a package name and an event type.
-- Does not log, store, or transmit any data outside the device.
-
-You can disable it at any time by turning off App Blocking in LovoCus Settings, or by revoking Accessibility access in Android Settings.
-
-You are always in control of this feature:
-
-- You choose which apps to block.
-- You can turn blocking off at any time.
-- You can revoke Accessibility permission at any time.
-
-LovoCus is intended for focus and productivity support only.
-
----
-
-## 6. Children's privacy
+## 5. Children's privacy
 
 LovoCus is intended for general audiences and is not directed at children under the age of 13. We do not knowingly collect any data from anyone, including children. The app does not require an account.
 
 ---
 
-## 7. Third parties
+## 6. Third parties
 
 LovoCus does not integrate any third-party SDKs, analytics libraries, advertising networks, or tracking tools. The only third-party assets included are:
 
@@ -96,13 +68,13 @@ LovoCus does not integrate any third-party SDKs, analytics libraries, advertisin
 
 ---
 
-## 8. Data security
+## 7. Data security
 
 Because LovoCus does not transmit your data anywhere, the only relevant security boundary is your device itself. Data is stored using Android's standard app-private storage, which is sandboxed from other apps. Use a device PIN, password, or biometric lock to protect your device.
 
 ---
 
-## 9. Your rights
+## 8. Your rights
 
 Because LovoCus does not collect or store your data on any server, there is nothing for us to access, export, or delete on your behalf. You retain full control:
 
@@ -114,13 +86,13 @@ These options give you the equivalent of GDPR (EU/UK), CCPA/CPRA (California), a
 
 ---
 
-## 10. Changes to this policy
+## 9. Changes to this policy
 
 If we ever change how the app handles data — for example, if a future version adds optional cloud backup or analytics — we will update this policy, change the "Last updated" date at the top, and prompt you in-app before any new data handling begins. You will always be given a chance to decline before any new collection occurs.
 
 ---
 
-## 11. Contact
+## 10. Contact
 
 Questions, concerns, or requests about this policy?
 
@@ -129,7 +101,7 @@ Questions, concerns, or requests about this policy?
 
 ---
 
-## 12. Terms of use
+## 11. Terms of use
 
 Use of LovoCus is also governed by the Terms of Use:
 
